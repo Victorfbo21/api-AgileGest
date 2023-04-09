@@ -1,5 +1,5 @@
 import express from 'express'
-import Routers from './Routes/Index.js'
+// import Routers from './Routes/Index.js'
 import { config } from 'dotenv'
 import dbConnect from './Config/dbConfig.js'
 import cors from 'cors'
@@ -9,6 +9,7 @@ config({
 })
 const app = express()
 const port = process.env.PORT || 8080
+
 app.use(express.json())
 
 // app.use((req, res, next) => {
@@ -18,7 +19,7 @@ app.use(express.json())
 // })
 app.use(cors())
 
-app.use(Routers)
+// app.use(Routers)
 
 app.use((req, res, next) => {
     res.setHeader('Access-Control-Allow-Origin', '*')
@@ -27,6 +28,7 @@ app.use((req, res, next) => {
     res.setHeader('Access-Control-Allow-Credentials', true)
     next()
 })
+
 dbConnect().then(r => {
     app.listen(port, (req, res) => {
         // ScheduleManager.createScheduleTimer()
