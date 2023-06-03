@@ -1,5 +1,5 @@
 import express from 'express'
-// import Routers from './Routes/Index.js'
+import Routers from './Routes/index.js'
 import { config } from 'dotenv'
 import dbConnect from './Config/dbConfig.js'
 import cors from 'cors'
@@ -8,18 +8,20 @@ config({
     path: '.env'
 })
 const app = express()
-const port = process.env.PORT || 8080
+const port = process.env.PORT
+app.get('/', (req, res) => {
+    res.send('Hello World')
+})
 
 app.use(express.json())
 
-// app.use((req, res, next) => {
-//     console.log(req.originalUrl, ' Time:', new Date().toUTCString())
-//     userContextInstance.destroy()
-//     next()
-// })
+app.use((req, res, next) => {
+    console.log(req.originalUrl, ' Time:', new Date().toUTCString())
+    next()
+})
 app.use(cors())
 
-// app.use(Routers)
+app.use(Routers)
 
 app.use((req, res, next) => {
     res.setHeader('Access-Control-Allow-Origin', '*')

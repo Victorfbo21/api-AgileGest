@@ -5,15 +5,19 @@ const dbConnect = () => {
     MONGO_URL += `${process.env.DATABASE_PORT}`
     MONGO_URL += `/${process.env.DATABASE_DB}`
     mongoose.set('strictQuery', false)
+
     return mongoose.connect(MONGO_URL,
         {
             authSource: 'admin',
             user: process.env.DATABASE_USER,
-            pass: process.env.DATABASE_PASSWORD
+            pass: process.env.DATABASE_PASSWORD,
+            useUnifiedTopology: true,
+            useNewUrlParser: true
         }
     ).then(
         () => {
             console.log('Connected to', process.env.DATABASE_DB)
+            console.log(MONGO_URL)
             return true
         }
     ).catch(
