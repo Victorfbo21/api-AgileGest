@@ -1,7 +1,5 @@
 import UserModel from '../Model/UserModel.js'
 
-
-
 const insertUser = async (req, res) => {
     const user = req.body;
     const created = await UserModel.insertUser(user)

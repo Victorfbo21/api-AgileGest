@@ -12,7 +12,6 @@ const insertPedido = async (req, res) => {
     }
 }
 
-
 export default {
     insertPedido
 }

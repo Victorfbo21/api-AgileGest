@@ -14,14 +14,6 @@ const insertPedido = (pedido) => {
     )
 }
 
-
-
-
-
-
-
-
-
 export default {
     insertPedido
 
