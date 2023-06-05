@@ -1,12 +1,11 @@
 import { Router } from "express";
 import UserRouter from './UserRoutes.js'
-import PedidosRouter from "./PedidosRoutes.js";
+import ColaboradorRoutes from "./ColaboradoresRoutes.js";
 
 const Routers = Router();
 
 Routers.use('/users', UserRouter)
-
-Routers.use('/pedidos', PedidosRouter)
+Routers.use('/colab', ColaboradorRoutes)
 
 
 export default Routers
