@@ -1,4 +1,4 @@
-import ColaboradoresModel from "../Model/ColaboradoresModel";
+import ColaboradoresModel from "../Model/ColaboradoresModel.js";
 
 const insertColab = async (req, res) => {
     const user = req.body;

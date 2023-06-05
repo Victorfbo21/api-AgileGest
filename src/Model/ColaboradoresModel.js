@@ -1,4 +1,4 @@
-import ColaboradorSchema from "../Schemas/ColaboradoresSchema"
+import ColaboradorSchema from "../Schemas/ColaboradoresSchema.js"
 
 const insertColab = (colaborador) => {
     const colabCreated = new ColaboradorSchema({ ...colaborador })

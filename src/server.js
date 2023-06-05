@@ -33,7 +33,6 @@ app.use((req, res, next) => {
 
 dbConnect().then(r => {
     app.listen(port, (req, res) => {
-        // ScheduleManager.createScheduleTimer()
         console.log(`Ouvindo em http://localhost:${port}`)
     })
 }).catch(err => console.error('Error on db connect', err))
