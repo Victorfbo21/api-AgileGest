@@ -1,4 +1,4 @@
-import AtendimentosModel from "../Model/AtendimentosModel";
+import AtendimentosModel from "../Model/AtendimentosModel.js";
 
 const insertAtendimento = async (req, res) => {
     const user = req.body;
@@ -9,6 +9,15 @@ const insertAtendimento = async (req, res) => {
     }
     else {
         res.send(500)
+    }
+}
+
+const getAtendimento = async (req, res) => {
+    const find = await AtendimentosModel.getAtendimento(req.query.filter, req.query.skip, req.query.limit)
+    if (find) {
+        res.status(200).send(find)
+    } else {
+        res.status(500)
     }
 }
 
@@ -39,5 +48,6 @@ const updateAtendimento = async (req, res) => {
 export default {
     insertAtendimento,
     deleteAtendimento,
-    updateAtendimento
+    updateAtendimento,
+    getAtendimento
 }

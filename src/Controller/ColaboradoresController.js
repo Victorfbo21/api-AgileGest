@@ -12,6 +12,15 @@ const insertColab = async (req, res) => {
     }
 }
 
+const getColaboradores = async (req, res) => {
+    const find = await ColaboradoresModel.getColaboradores(req.query.filter, req.query.skip, req.query.limit)
+    if (find) {
+        res.status(200).send(find)
+    } else {
+        res.status(500)
+    }
+}
+
 const deleteColab = async (req, res) => {
     const id = req.params.id
     const colabDeleted = await ColaboradoresModel.deleteColab(id)
@@ -39,5 +48,6 @@ const updateColab = async (req, res) => {
 export default {
     insertColab,
     deleteColab,
-    updateColab
+    updateColab,
+    getColaboradores
 }

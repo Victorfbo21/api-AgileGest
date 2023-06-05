@@ -1,6 +1,5 @@
 import UserSchema from "../Schemas/UserSchema.js";
 
-
 const insertUser = (user) => {
     const userCreated = new UserSchema({ ...user })
     return userCreated.save().then(
@@ -11,6 +10,25 @@ const insertUser = (user) => {
     ).catch(
         (e) => {
             return e
+        }
+    )
+}
+const getUsers = (filter, skip, limit) => {
+    filter = filter || ''
+    return UserSchema.find({
+        $or: [
+            { nome: new RegExp('.*' + filter + '.*', 'i') },
+
+
+        ]
+    }).skip(skip || 0).limit(limit || 0).then(
+        (o) => {
+            return o
+        }
+    ).catch(
+        (e) => {
+            console.log('Error Finding Users', e)
+            return null
         }
     )
 }
@@ -46,5 +64,6 @@ const updateUser = (id, update) => {
 export default {
     insertUser,
     deleteUser,
-    updateUser
+    updateUser,
+    getUsers
 }

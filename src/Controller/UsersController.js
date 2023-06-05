@@ -4,11 +4,21 @@ const insertUser = async (req, res) => {
     const user = req.body;
     const created = await UserModel.insertUser(user)
     if (created) {
+        console.log(created)
         res.statusCode = 201
         res.send(created._id)
     }
     else {
         res.send(500)
+    }
+}
+
+const getUsers = async (req, res) => {
+    const find = await UserModel.getUsers(req.query.filter, req.query.skip, req.query.limit)
+    if (find) {
+        res.status(200).send(find)
+    } else {
+        res.status(500)
     }
 }
 
@@ -39,5 +49,6 @@ const updateUser = async (req, res) => {
 export default {
     insertUser,
     deleteUser,
-    updateUser
+    updateUser,
+    getUsers
 }

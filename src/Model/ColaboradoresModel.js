@@ -13,7 +13,26 @@ const insertColab = (colaborador) => {
         }
     )
 }
+const getColaboradores = (filter, skip, limit) => {
+    filter = filter || ''
+    return ColaboradorSchema.find({
+        $or: [
+            { nome: new RegExp('.*' + filter + '.*', 'i') },
+            { telefone: new RegExp('.*' + filter + '.*', 'i') },
+            { funcao: new RegExp('.*' + filter + '.*', 'i') }
 
+        ]
+    }).skip(skip || 0).limit(limit || 0).then(
+        (o) => {
+            return o
+        }
+    ).catch(
+        (e) => {
+            console.log('Error Finding Colabs', e)
+            return null
+        }
+    )
+}
 
 const deleteColab = (id) => {
     return ColaboradorSchema.findByIdAndRemove(id).then(
@@ -45,5 +64,6 @@ const updateColab = (id, update) => {
 export default {
     insertColab,
     deleteColab,
-    updateColab
+    updateColab,
+    getColaboradores
 }

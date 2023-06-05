@@ -1,4 +1,4 @@
-import AtendimentosSchema from "../Schemas/AtendimentosSchema"
+import AtendimentosSchema from "../Schemas/AtendimentosSchema.js"
 
 const insertAtendimento = (atendimento) => {
     const atendimentoCreated = new AtendimentosSchema({ ...atendimento })
@@ -10,6 +10,27 @@ const insertAtendimento = (atendimento) => {
     ).catch(
         (e) => {
             return e
+        }
+    )
+}
+
+const getAtendimento = (filter, skip, limit) => {
+    filter = filter || ''
+    return AtendimentosSchema.find({
+        $or: [
+            { emAndamento: new RegExp('.*' + filter + '.*', 'i') },
+            { colaborador: new RegExp('.*' + filter + '.*', 'i') },
+            { servico: new RegExp('.*' + filter + '.*', 'i') }
+
+        ]
+    }).skip(skip || 0).limit(limit || 0).then(
+        (o) => {
+            return o
+        }
+    ).catch(
+        (e) => {
+            console.log('Error Finding Messages', e)
+            return null
         }
     )
 }
@@ -44,5 +65,6 @@ const updateAtendimento = (id, update) => {
 export default {
     insertAtendimento,
     deleteAtendimento,
-    updateAtendimento
+    updateAtendimento,
+    getAtendimento
 }

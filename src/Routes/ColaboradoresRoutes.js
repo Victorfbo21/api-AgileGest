@@ -3,9 +3,9 @@ import ColaboradoresController from '../Controller/ColaboradoresController.js';
 
 const ColaboradorRoutes = Router();
 
-// ColaboradorRoutes.get('/', (req, res) => {
-//     return ColaboradoresController.getUsers(req, res)
-// })
+ColaboradorRoutes.get('/', (req, res) => {
+    return ColaboradoresController.getColaboradores(req, res)
+})
 
 ColaboradorRoutes.put('/', (req, res) => {
     return ColaboradoresController.insertColab(req, res)
