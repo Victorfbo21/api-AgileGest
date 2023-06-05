@@ -17,7 +17,7 @@ const getUsers = (filter, skip, limit) => {
     filter = filter || ''
     return UserSchema.find({
         $or: [
-            { nome: new RegExp('.*' + filter + '.*', 'i') },
+            { email: new RegExp('.*' + filter + '.*', 'i') },
 
 
         ]

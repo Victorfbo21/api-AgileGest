@@ -3,7 +3,7 @@ import mongoose from "mongoose";
 
 const AtendimentosSchema = new mongoose.Schema({
     nomeCliente: { type: String, ref: "Cliente" },
-    servico: { type: String },
+    servico: { type: String, ref: "Servico" },
     colaborador: { type: String, ref: "Colaborador" },
     emAndamento: { type: Boolean },
     isActive: { type: Boolean }
