@@ -48,6 +48,7 @@ const login = async (req, res) => {
     user.password = encodePassword(user.password)
     const logged = await AuthModel.login(user)
     if (logged) {
+        console.log(logged)
         const auth = getToken(logged, 'user')
         res.send({ logged, auth })
     } else { res.send(401) }

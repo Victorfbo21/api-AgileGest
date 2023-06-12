@@ -4,8 +4,7 @@ const insertUser = async (req, res) => {
     const user = req.body;
     const created = await UserModel.insertUser(user)
     if (created) {
-        res.statusCode = 201
-        res.send(created._id)
+        res.status(201).send(created)
     }
     else {
         res.send(500)
