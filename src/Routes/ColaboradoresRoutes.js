@@ -11,11 +11,11 @@ ColaboradorRoutes.put('/', (req, res) => {
     return ColaboradoresController.insertColab(req, res)
 })
 
-ColaboradorRoutes.delete('/:id', (req, res) => {
+ColaboradorRoutes.delete('/delete/:id', (req, res) => {
     return ColaboradoresController.deleteColab(req, res)
 })
 
-ColaboradorRoutes.patch('/:id', (req, res) => {
+ColaboradorRoutes.patch('/update/:id', (req, res) => {
     return ColaboradoresController.updateColab(req, res)
 })
 

@@ -6,7 +6,7 @@ const ColaboradorSchema = new mongoose.Schema({
     telefone: { type: String },
     email: { type: String },
     dataNascimento: { type: String },
-    funcao: { type: String },
+    servico: { type: String, ref: "Servico" },
     isActive: { type: Boolean }
 
 

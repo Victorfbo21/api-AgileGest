@@ -3,19 +3,19 @@ import UsersController from '../Controller/UsersController.js';
 
 const UsersRouter = Router();
 
-UsersRouter.get('/', (req, res) => {
+UsersRouter.get('/list', (req, res) => {
     return UsersController.getUsers(req, res)
 })
 
-UsersRouter.put('/', (req, res) => {
+UsersRouter.put('/create', (req, res) => {
     return UsersController.insertUser(req, res)
 })
 
-UsersRouter.delete('/:id', (req, res) => {
+UsersRouter.delete('/delete/:id', (req, res) => {
     return UsersController.deleteUser(req, res)
 })
 
-UsersRouter.patch('/:id', (req, res) => {
+UsersRouter.patch('/update/:id', (req, res) => {
     return UsersController.updateUser(req, res)
 })
 

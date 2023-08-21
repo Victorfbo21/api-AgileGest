@@ -1,7 +1,7 @@
 version: "3.1"
 services:
   mongo:
-    container_name: mongo-meurestaurante
+    container_name: mongo-apitemplate
     image: mongo:latest
     restart: always
     ports:
@@ -10,7 +10,7 @@ services:
       MONGO_INITDB_ROOT_USERNAME: root
       MONGO_INITDB_ROOT_PASSWORD: root
     networks:
-      - meurestaurante-api
+      - template-api
 
   mongo-express:
     image: mongo-express
@@ -22,10 +22,10 @@ services:
       ME_CONFIG_MONGODB_ADMINPASSWORD: root
       ME_CONFIG_BASICAUTH_USERNAME: admin
       ME_CONFIG_BASICAUTH_PASSWORD: admin
-      ME_CONFIG_MONGODB_URL: mongodb://root:root@mongo:27017/
+      ME_CONFIG_MONGODB_URL: mongodb://root:root@mongo:27017/apitemplate
     networks:
-      - meurestaurante-api
+      - template-api
 
 networks:
-  meurestaurante-api:
+  template-api:
     external: false

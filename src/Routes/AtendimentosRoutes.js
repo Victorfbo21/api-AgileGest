@@ -11,11 +11,11 @@ AtendimentoRoutes.put('/', (req, res) => {
     return AtendimentosController.insertAtendimento(req, res)
 })
 
-AtendimentoRoutes.delete('/:id', (req, res) => {
+AtendimentoRoutes.delete('/delete/:id', (req, res) => {
     return AtendimentosController.deleteAtendimento(req, res)
 })
 
-AtendimentoRoutes.patch('/:id', (req, res) => {
+AtendimentoRoutes.patch('/update/:id', (req, res) => {
     return AtendimentosController.updateAtendimento(req, res)
 })
 

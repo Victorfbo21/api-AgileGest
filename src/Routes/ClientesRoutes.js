@@ -10,11 +10,11 @@ ClienteRoutes.put('/', (req, res) => {
     return ClientesController.insertCliente(req, res)
 })
 
-ClienteRoutes.delete('/:id', (req, res) => {
+ClienteRoutes.delete('/delete/:id', (req, res) => {
     return ClientesController.deleteCliente(req, res)
 })
 
-ClienteRoutes.patch('/:id', (req, res) => {
+ClienteRoutes.patch('/update/:id', (req, res) => {
     return ClientesController.updateCliente(req, res)
 })
 

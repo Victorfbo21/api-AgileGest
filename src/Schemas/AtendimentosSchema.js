@@ -5,7 +5,8 @@ const AtendimentosSchema = new mongoose.Schema({
     nomeCliente: { type: String, ref: "Cliente" },
     servico: { type: String, ref: "Servico" },
     colaborador: { type: String, ref: "Colaborador" },
-    emAndamento: { type: Boolean },
+    initialHour: { type: String },
+    finalHour: { type: String },
     isActive: { type: Boolean }
 
 

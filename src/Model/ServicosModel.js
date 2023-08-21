@@ -1,22 +1,23 @@
 import ServicosSchemas from "../Schemas/ServicosSchemas.js"
 
-const insertServico = (servico) => {
+const insertServico = async (servico) => {
     const servicoCreated = new ServicosSchemas({ ...servico })
-    return servicoCreated.save().then(
-        (o) => {
-            return o
-        }
+    return await servicoCreated.save()
+        .then(
+            (o) => {
+                return o
+            }
 
-    ).catch(
-        (e) => {
-            return e
-        }
-    )
+        ).catch(
+            (e) => {
+                return e
+            }
+        )
 }
 
-const getServico = (filter, skip, limit) => {
+const getServico = async (filter, skip, limit) => {
     filter = filter || ''
-    return ServicosSchemas.find({
+    return await ServicosSchemas.find({
         $or: [
             { nomeServico: new RegExp('.*' + filter + '.*', 'i') },
             { tempoMedio: new RegExp('.*' + filter + '.*', 'i') }
@@ -33,20 +34,22 @@ const getServico = (filter, skip, limit) => {
     )
 }
 
-const deleteServico = (id) => {
-    return ServicosSchemas.findByIdAndRemove(id).then(
-        (o) => {
-            return o
-        }
-    ).catch(
-        (e) => {
-            console.log('Error on Delete Serviço')
-        }
-    )
+const deleteServico = async (id) => {
+    return await ServicosSchemas.findByIdAndRemove(id)
+        .then(
+            (o) => {
+                return o
+            }
+        ).catch(
+            (e) => {
+                console.log('Error on Delete Serviço')
+                return e
+            }
+        )
 }
 
-const updateServico = (id, update) => {
-    return ServicosSchemas.findByIdAndUpdate(id, update).then(
+const updateServico = async (id, update) => {
+    return await ServicosSchemas.findByIdAndUpdate(id, update).then(
         (o) => {
             return o
         }

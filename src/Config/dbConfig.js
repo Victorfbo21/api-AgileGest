@@ -1,19 +1,20 @@
 import mongoose from 'mongoose'
 
 const dbConnect = () => {
-    // let MONGO_URL = `mongodb://${process.env.DATABASE_URL}:`
+    let MONGO_URL = `mongodb+srv://${process.env.DATABASE_URL}:`
     // MONGO_URL += `${process.env.DATABASE_PORT}`
     // MONGO_URL += `/${process.env.DATABASE_DB}`
     mongoose.set('strictQuery', false)
-    return mongoose.connect(process.env.DATABASE_URL,
+    return mongoose.connect(MONGO_URL,
         {
             authSource: 'admin',
             user: process.env.DATABASE_USER,
-            pass: process.env.DATABASE_PASSWORD
+            pass: process.env.DATABASE_PASSWORD,
+            dbName: process.env.DATABASE_DB
         }
     ).then(
         () => {
-            console.log('Connected to', process.env.DATABASE_DB)
+            console.log('Connected to', MONGO_URL)
             console.log(process.env.DATABASE_URL)
             return true
         }
